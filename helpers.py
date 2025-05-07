@@ -281,7 +281,7 @@ the same directory.
 """
 def plot_nrmse_vs_sr(n_runs, reservoir_params, U_train, Y_train, U_test, Y_test, warmup, output_path):
     os.makedirs(output_path, exist_ok=True)
-    """
+
     nrmse_vs_sr_dict = {}
     avg_nrmse_list = []
     nrmse_std_list = []
@@ -296,11 +296,6 @@ def plot_nrmse_vs_sr(n_runs, reservoir_params, U_train, Y_train, U_test, Y_test,
 
     with open(os.path.join(output_path, "nrmse_vs_sr.json"), "w") as json_file:
         json.dump(nrmse_vs_sr_dict, json_file, indent=4)
-    """
-    with open("analysis/lorenz/nrmse_vs_sr.json", "r") as json_file:
-        nrmse_vs_sr_dict = json.load(json_file)
-    avg_nrmse_list = [nrmse_vs_sr_dict[sr]["avg_nrmse"] for sr in list(nrmse_vs_sr_dict.keys())]
-    nrmse_std_list = [nrmse_vs_sr_dict[sr]["nrmse_std"] for sr in list(nrmse_vs_sr_dict.keys())]
         
     plt.errorbar(np.arange(0.05, 1.15, 0.05), avg_nrmse_list, yerr=nrmse_std_list, fmt='o', capsize=5)
 
@@ -321,7 +316,7 @@ radius and its standard deviation for each epoch and are created by 'avg_nrmse' 
 The optimal spectral radius 'sr_opt' is also marked in the plot.
 """
 def plot_sr_vs_epoch(results_dict_SP, results_dict_IP, sr_opt, output_file):
-    fig, ax = plt.subplots(1, 2, figsize=(14, 6))
+    fig, ax = plt.subplots(1, 2, figsize=(14, 5))
     for (method_name, result), color in zip(results_dict_SP.items(), ["tab:green", "tab:red", "blue", "purple"]):
         ax[0].errorbar(range(0, len(result["avg_sr_list"])), result["avg_sr_list"], yerr=result["sr_std_list"], 
                        fmt='o', capsize=5, label=method_name, color=color)
@@ -341,6 +336,7 @@ def plot_sr_vs_epoch(results_dict_SP, results_dict_IP, sr_opt, output_file):
     ax[0].set_title("Synaptic Plasticity", fontsize=18)
     ax[1].set_title("Intrinsic Plasticity", fontsize=18)
 
+    plt.tight_layout()
     plt.savefig(output_file, dpi=1000)
     plt.close()
     
