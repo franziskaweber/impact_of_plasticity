@@ -14,7 +14,7 @@ from tqdm import tqdm
 
 """ 
 Normalizes the input data 'U_train', 'U_test' with the mean and standard deviation of the training input 'U_train' and
-the output data 'Y_train', 'Y_test' with the mean and standard deviation of the training output.
+the output data 'Y_train', 'Y_test' with the mean and standard deviation of the training output 'Y_train'.
 """
 def normalize_data(U_train, Y_train, U_test, Y_test):
     mean_U = np.mean(U_train, axis=0)
@@ -34,6 +34,7 @@ Calculates the spectral radius of the matrix 'W'.
 """
 def spectral_radius(W):
     return max(abs(np.linalg.eigvals(W)))
+    
 """
 Calculates the root mean squared error between the true values 'Y_test' and the predictions 'Y_pred' normalized by the standard deviation
 of 'Y_test'.
@@ -44,7 +45,7 @@ def nrmse(Y_test, Y_pred):
     return np.mean(rmse(Y_test, Y_pred) / np.std(Y_test, axis=0))
 
 """ 
-Returns an updated version of the weight matrix 'W' according to Anti-Oja's rule.
+Returns an updated version of the weight matrix 'W' according to anti-Oja's rule.
 'x_pre' and 'x_post' are the activations of the pre- and postsynaptic reservoir neurons and 'eta' is the learning rate.
 """
 def anti_oja(W, x_pre, x_post, eta):
