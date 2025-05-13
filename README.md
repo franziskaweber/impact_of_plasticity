@@ -26,7 +26,7 @@ If you want to reproduce the results from the paper, start by creating the conda
 conda env create -f env.yml
 ```
 
-Then open the notebook `plasticity_env` and select the created `plasticity_env` as kernel. Now simply go through the notebook which will guide you through all of our experiments.
+Then open the notebook `impact_of_plasticity.ipynb` and select the created `plasticity_env` as kernel. Now simply go through the notebook which will guide you through all of our experiments.
 
 ## Contact
 
