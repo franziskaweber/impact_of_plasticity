@@ -58,7 +58,7 @@ def anti_oja(W, x_pre, x_post, eta):
     return W
 
 """ 
-Returns an updated version of the weight matrix 'W' according to the normalized Anti-Hebbian rule.
+Returns an updated version of the weight matrix 'W' according to the normalized anti-Hebbian rule.
 'x_pre' and 'x_post' are the activations of the pre- and postsynaptic reservoir neurons and 'eta' is the learning rate.
 """
 def normalized_anti_hebbian(W, x_pre, x_post, eta):
